@@ -1,0 +1,6 @@
+[submodule "/hetu_otp_util"]
+	path = /hetu_otp_util
+	url = https://github.com/hetu-community/hetu_otp_util.git
+[submodule "/hetu_spotify_gql_client"]
+	path = /hetu_spotify_gql_client
+	url = git@github.com:sonic-liberation/hetu_spotify_gql_client.git

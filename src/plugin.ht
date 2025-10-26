@@ -1,0 +1,50 @@
+import "module:std" as std
+import "module:spotube_plugin" as spotube
+import { SpotifyGqlApi } from '../hetu_injectables/hetu_spotify_gql_client/lib/assets/hetu/spotify_gql_api_client.ht'
+
+import { SpotifyAuthEndpoint } from './services/auth.ht'
+import { AlbumEndpoint } from "./services/album.ht"
+import { ArtistEndpoint } from "./services/artist.ht"
+import { BrowseEndpoint } from "./services/browse.ht"
+import { PlaylistEndpoint } from './services/playlist.ht'
+import { SearchEndpoint } from './services/search.ht'
+import { TrackEndpoint } from './services/track.ht'
+import { UserEndpoint } from './services/user.ht'
+import { CorePlugin } from './services/core.ht'
+
+var Stream = std.Stream
+var HttpClient = std.HttpClient
+
+class SpotifyMetadataProviderPlugin {
+  var auth: SpotifyAuthEndpoint
+  var api: SpotifyGqlApi
+
+  var album: AlbumEndpoint
+  var artist: ArtistEndpoint
+  var browse: BrowseEndpoint
+  var playlist: PlaylistEndpoint
+  var search: SearchEndpoint
+  var track: TrackEndpoint
+  var user: UserEndpoint
+  var core: CorePlugin
+  
+  construct (){
+    api = SpotifyGqlApi()
+    auth = SpotifyAuthEndpoint()
+
+    album = AlbumEndpoint(api)
+    artist = ArtistEndpoint(api)
+    browse = BrowseEndpoint(api, auth)
+    playlist = PlaylistEndpoint(api)
+    search = SearchEndpoint(api)
+    track = TrackEndpoint(api)
+    user = UserEndpoint(api)
+    core = CorePlugin()
+
+    auth.authStateStream.listen((event) {
+      api.setAccessToken(auth.credentials["accessToken"])
+    })
+  }
+}
+
+export { SpotifyMetadataProviderPlugin }

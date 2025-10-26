@@ -1,0 +1,12 @@
+{
+  "type": "metadata",
+  "version": "0.1",
+  "name": "Spotify Metadata-Provider",
+  "author": "Shubs",
+  "description": "Spotify metadata provider for Spotube",
+  "entryPoint": "SpotifyMetadataProviderPlugin",
+  "apis": ["webview", "localstorage", "timezone"],
+  "abilities": ["authentication"],
+  "repository": "https://github.com/ShubhamTaple/SpotifyMetadataProviderForSpotube",
+  "pluginApiVersion": "1.0.0"
+}
