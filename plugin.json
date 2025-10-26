@@ -2,7 +2,7 @@
   "type": "metadata",
   "version": "0.1",
   "name": "Spotify Metadata-Provider",
-  "author": "Shubs",
+  "author": "Shubham Taple",
   "description": "Spotify metadata provider for Spotube",
   "entryPoint": "SpotifyMetadataProviderPlugin",
   "apis": ["webview", "localstorage", "timezone"],
